@@ -1,18 +1,20 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { Environment, useGLTF } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import iphone from "./../assets/googlePixel.glb";
+import fieldhdr from "./../assets/hdr/field.hdr";
+import lobbyhdr from "./../assets/hdr/lobby.hdr";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const IPhoneModel = React.forwardRef((props, ref) => {
   const { scene } = useGLTF(iphone);
   // Set the initial position, rotation, and scale
-  scene.position.set(0.03, -0.5, 2);
-  scene.rotation.set(0, -1.56, 0);
-  scene.scale.set(0.4, 0.4, 0.4);
+  scene.position.set(0.7, 2.31, 0);
+  scene.rotation.set(0, Math.PI * 1.5, 0);
+  scene.scale.set(0.25, 0.25, 0.25);
   return <primitive ref={ref} object={scene} />;
 });
 
@@ -21,9 +23,9 @@ const IPhoneScene = () => {
 
   useEffect(() => {
     if (group) {
-      const initialPosition = { x: 0.03, y: -0.5, z: 2 };
-      const initialRotation = { x: 0, y: -1.56, z: 0 };
-      const initialScale = 0.4;
+      const initialPosition = { x: 0.7, y: 2.31, z: 0 };
+      const initialRotation = { x: 0, y: Math.PI * 1.5, z: 0 };
+      const initialScale = 0.25;
 
       const triggers = [];
 
@@ -32,23 +34,23 @@ const IPhoneScene = () => {
         ScrollTrigger.create({
           trigger: ".section2",
           start: "top bottom",
-          end: "center center",
+          end: "center center+=250",
           scrub: 1,
           onUpdate: (self) => {
             const progress = self.progress;
 
             // Calculate new properties based on progress
-            const newY = initialPosition.y + 0.1 * progress;
-            const newRotation = initialRotation.y + -6.4 * progress;
-            const newScale = initialScale - 0.25 * progress;
+            const newY = initialPosition.y - 1.88 * progress;
+            const newX = initialPosition.x - 1.23 * progress;
+            const newRotationX = initialRotation.x + 4.7 * progress;
+            const newRotationY = initialRotation.y - 1.575 * progress;
+            const newRotationZ = initialRotation.z + 1.55 * progress;
+
+            const newScale = initialScale + 0.12 * progress;
 
             // Apply changes
-            group.position.set(initialPosition.x, newY, initialPosition.z);
-            group.rotation.set(
-              initialRotation.x,
-              newRotation,
-              initialRotation.z
-            );
+            group.position.set(newX, newY, initialPosition.z);
+            group.rotation.set(newRotationX, newRotationY, newRotationZ);
             group.scale.set(newScale, newScale, newScale);
           },
         })
@@ -110,14 +112,15 @@ const IPhoneScene = () => {
       <Suspense fallback={null}>
         {/* Lighting */}
         <directionalLight
-          position={[1, 3, 4]}
+          position={[0, 0, 4]}
           intensity={1}
-          castShadow={false}
+          castShadow={true}
         />
         <ambientLight intensity={4} />
 
         {/* iPhone Model */}
         <IPhoneModel ref={handleRef} />
+        <Environment files={fieldhdr} environmentIntensity={0.8} />
       </Suspense>
     </Canvas>
   );
