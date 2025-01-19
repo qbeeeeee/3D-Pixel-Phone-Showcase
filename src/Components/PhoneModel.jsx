@@ -20,62 +20,88 @@ const IPhoneModel = React.forwardRef((props, ref) => {
 
       {/* Ensure the Html component follows the group's transform */}
       <Html position={[0, 0, 0]} scale={0.2}>
-        <div className="mt-[-105px] ml-[200px] w-10 h-10 m-4 relative">
-          <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
-            <img
-              src={test}
-              alt=""
-              className="w-20 absolute -bottom-3 right-[188px]"
-            />
-            <div className="text-4xl text-blue-400 font-semibold">50MP</div>
-            <div className="font-semibold text-lg text-gray-500">(Main)</div>
-          </div>
+        {props.animationSection2Finished && (
+          <div>
+            <div
+              className={`mt-[-105px] ml-[200px] w-10 h-10 m-4 relative ${
+                props.section2CameraFirst ? "opacity-100" : "opacity-0"
+              } transform duration-300 ease-in-out`}
+            >
+              <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
+                <img
+                  src={test}
+                  alt=""
+                  className="w-20 absolute -bottom-3 right-[188px]"
+                />
+                <div className="text-4xl text-blue-400 font-semibold">50MP</div>
+                <div className="font-semibold text-lg text-gray-500">
+                  (Main)
+                </div>
+              </div>
 
-          <div className="h-[1px] bg-white w-28 absolute top-4 left-9" />
-        </div>
+              <div className="h-[1px] bg-white w-28 absolute top-4 left-9" />
+            </div>
 
-        <div className="mt-[21px] ml-[200px] w-10 h-10 m-4 relative">
-          <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
-            <img
-              src={test}
-              alt=""
-              className="w-20 absolute -bottom-3 right-[188px]"
-            />
-            <div className="text-4xl text-blue-400 font-semibold">48MP</div>
-            <div className="font-semibold text-lg text-gray-500">
-              (Ultrawide)
+            <div
+              className={`mt-[22px] ml-[200px] w-10 h-10 m-4 relative ${
+                props.section2CameraSecond ? "opacity-100" : "opacity-0"
+              } transform duration-300 ease-in-out`}
+            >
+              <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
+                <img
+                  src={test}
+                  alt=""
+                  className="w-20 absolute -bottom-3 right-[188px]"
+                />
+                <div className="text-4xl text-blue-400 font-semibold">48MP</div>
+                <div className="font-semibold text-lg text-gray-500">
+                  (Ultrawide)
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-white w-24 absolute top-4 left-9" />
+            </div>
+
+            <div
+              className={`mt-[20px] ml-[200px] w-10 h-10 m-4 relative ${
+                props.section2CameraThird ? "opacity-100" : "opacity-0"
+              } transform duration-300 ease-in-out`}
+            >
+              <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
+                <img
+                  src={test}
+                  alt=""
+                  className="w-20 absolute -bottom-3 right-[188px]"
+                />
+                <div className="text-4xl text-blue-400 font-semibold">
+                  48MP 5x
+                </div>
+                <div className="font-semibold text-lg text-gray-500">
+                  (Telephoto)
+                </div>
+              </div>
+
+              <div className="h-[1px] bg-white w-16 absolute top-4 left-9" />
             </div>
           </div>
-
-          <div className="h-[1px] bg-white w-24 absolute top-4 left-9" />
-        </div>
-
-        <div className="mt-[17px] ml-[200px] w-10 h-10 m-4 relative">
-          <div className="flex flex-col justify-center items-center absolute bottom-0 -right-52">
-            <img
-              src={test}
-              alt=""
-              className="w-20 absolute -bottom-3 right-[188px]"
-            />
-            <div className="text-4xl text-blue-400 font-semibold">48MP 5x</div>
-            <div className="font-semibold text-lg text-gray-500">
-              (Telephoto)
-            </div>
-          </div>
-
-          <div className="h-[1px] bg-white w-16 absolute top-4 left-9" />
-        </div>
+        )}
       </Html>
     </group>
   );
 });
 
-const IPhoneScene = () => {
+const IPhoneScene = ({
+  section2CameraFirst,
+  section2CameraSecond,
+  section2CameraThird,
+}) => {
   const [group, setGroup] = useState(null);
+  const [animationSection2Finished, setAnimationSection2Finished] =
+    useState(false);
 
   useEffect(() => {
     if (group) {
-      group.position.set(0.7, 2.31, 0);
+      group.position.set(0.7, 2.38, 0);
       group.rotation.set(0, Math.PI * 1.5, 0);
       group.scale.set(0.25, 0.25, 0.25);
     }
@@ -89,62 +115,70 @@ const IPhoneScene = () => {
 
       const triggers = [];
 
-      // ScrollTrigger for .section2
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: ".section2",
-          start: "top bottom",
-          end: "center center+=250",
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
+      const ctx = gsap.context(() => {
+        // ScrollTrigger for .section2
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: ".section2",
+            start: "top bottom",
+            end: "center center+=250",
+            scrub: 1,
+            onUpdate: (self) => {
+              const progress = self.progress;
 
-            // Calculate new properties based on progress
-            const newY = initialPosition.y - 1.88 * progress;
-            const newX = initialPosition.x - 1.23 * progress;
-            const newRotationX = initialRotation.x + 4.7 * progress;
-            const newRotationY = initialRotation.y - 1.575 * progress;
-            const newRotationZ = initialRotation.z + 1.55 * progress;
+              // Calculate new properties based on progress
+              const newY = initialPosition.y - 1.82 * progress;
+              const newX = initialPosition.x - 1.23 * progress;
+              const newRotationX = initialRotation.x + 4.7 * progress;
+              const newRotationY = initialRotation.y - 1.575 * progress;
+              const newRotationZ = initialRotation.z + 1.55 * progress;
 
-            const newScale = initialScale + 0.12 * progress;
+              const newScale = initialScale + 0.12 * progress;
 
-            // Apply changes
-            group.position.set(newX, newY, initialPosition.z);
-            group.rotation.set(newRotationX, newRotationY, newRotationZ);
-            group.scale.set(newScale, newScale, newScale);
-          },
-        })
-      );
+              // Apply changes
+              group.position.set(newX, newY, initialPosition.z);
+              group.rotation.set(newRotationX, newRotationY, newRotationZ);
+              group.scale.set(newScale, newScale, newScale);
+            },
+            onLeave: () => {
+              setAnimationSection2Finished(true);
+            },
+            onEnterBack: () => {
+              setAnimationSection2Finished(false);
+            },
+          })
+        );
 
-      // ScrollTrigger for .section3
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: ".section3",
-          start: "top bottom",
-          end: "top center",
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
+        // ScrollTrigger for .section3
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: ".section3",
+            start: "top bottom-=100",
+            end: "top center",
+            scrub: 1,
+            onUpdate: (self) => {
+              const progress = self.progress;
 
-            // Calculate new properties based on progress
-            const newY = initialPosition.y - 1.88 - 2 * progress;
-            const newX = initialPosition.x - 1.23 - 0 * progress;
-            const newRotation = initialRotation.z + 1.55 + 0.022 * progress;
-            const newRotation1 = initialRotation.y - 1.575 - 0 * progress;
-            const newRotation2 = initialRotation.x + 4.7 + 4.6 * progress;
-            const newScale = initialScale + 0.12 - 0.1 * progress;
+              // Calculate new properties based on progress
+              const newY = initialPosition.y - 1.82 - 1.24 * progress;
+              const newX = initialPosition.x - 1.23 + 1.45 * progress;
+              const newRotation = initialRotation.z + 1.55 + 0.022 * progress;
+              const newRotation1 = initialRotation.y - 1.575 - 0 * progress;
+              const newRotation2 = initialRotation.x + 4.7 + 4.65 * progress;
+              const newScale = initialScale + 0.12 - 0.1 * progress;
 
-            // Apply changes
-            group.position.set(newX, newY, initialPosition.z);
-            group.rotation.set(newRotation2, newRotation1, newRotation);
-            group.scale.set(newScale, newScale, newScale);
-          },
-        })
-      );
+              // Apply changes
+              group.position.set(newX, newY, initialPosition.z);
+              group.rotation.set(newRotation2, newRotation1, newRotation);
+              group.scale.set(newScale, newScale, newScale);
+            },
+          })
+        );
+      });
 
-      // Cleanup on unmount
       return () => {
         triggers.forEach((trigger) => trigger.kill());
+        ctx.revert(); // Revert the gsap context animations
       };
     }
   }, [group]);
@@ -179,7 +213,13 @@ const IPhoneScene = () => {
         <ambientLight intensity={4} />
 
         {/* iPhone Model */}
-        <IPhoneModel ref={handleRef} />
+        <IPhoneModel
+          ref={handleRef}
+          animationSection2Finished={animationSection2Finished}
+          section2CameraFirst={section2CameraFirst}
+          section2CameraSecond={section2CameraSecond}
+          section2CameraThird={section2CameraThird}
+        />
         <Environment files={fieldhdr} environmentIntensity={0.8} />
       </Suspense>
     </Canvas>

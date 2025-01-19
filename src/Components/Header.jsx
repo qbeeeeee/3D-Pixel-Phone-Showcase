@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import logo from "./../assets/images/googleLogo.webp";
 
-const Header = () => {
+const Header = ({ scrollToComponent }) => {
   useEffect(() => {
     const header = document.getElementById("main-header");
 
@@ -39,10 +39,25 @@ const Header = () => {
             loading="lazy"
           />
           <div>Google Pixel 8 Pro</div>
-          <div>Section1</div>
-          <div>Section2</div>
-          <div>Section3</div>
-          <div>Section4</div>
+          <div
+            className="cursor-pointer opacity-60"
+            onClick={() => scrollToComponent("section1")}
+          >
+            Section1
+          </div>
+          <div
+            className="cursor-pointer opacity-60"
+            onClick={() => scrollToComponent("section2")}
+          >
+            Section2
+          </div>
+          <div
+            className="cursor-pointer opacity-60"
+            onClick={() => scrollToComponent("section3")}
+          >
+            Section3
+          </div>
+          {/* <div className="cursor-pointer opacity-60">Section4</div> */}
         </div>
 
         <div className="text-end flex items-center justify-center gap-4">
