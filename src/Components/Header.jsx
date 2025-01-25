@@ -30,8 +30,8 @@ const Header = ({ scrollToComponent }) => {
       className="absolute bg-[#bee0ff] flex pt-1 h-[70px] left-0 right-0 z-50 opacity-100 transition-all duration-300 mx-auto"
     >
       {/* Foreground content */}
-      <div className="container mx-auto px-20 xl:px-24 flex justify-between items-center z-10">
-        <div className="flex items-center gap-7 text-lg font-semibold">
+      <div className="container mx-auto px-2 sm:px-10 lg:px-20 xl:px-24 flex justify-between items-center z-10">
+        <div className="flex items-center gap-4 sm:gap-7 text-[14px] sm:text-[16px] lg:text-lg font-semibold">
           <img
             src={logo}
             className="w-[40px] sm:w-[60px]"
@@ -60,10 +60,10 @@ const Header = ({ scrollToComponent }) => {
           {/* <div className="cursor-pointer opacity-60">Section4</div> */}
         </div>
 
-        <div className="text-end flex items-center justify-center gap-4">
+        <div className="hidden lg:flex text-end items-center justify-center gap-4">
           <div>
             <div className="text-[14px]">From $999</div>
-            <div className="text-[14px]">
+            <div className="text-[10px] xl:text-[14px]">
               or $27.75/month with 36-month financing*
             </div>
           </div>

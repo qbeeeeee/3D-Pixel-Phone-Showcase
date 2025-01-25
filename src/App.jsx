@@ -29,6 +29,7 @@ import section5Two from "./assets/svgs/section5Two.svg";
 import section5Three from "./assets/svgs/section5Three.svg";
 import section5Four from "./assets/svgs/section5Four.svg";
 import section5Five from "./assets/svgs/section5Five.svg";
+import twoPhones from "./assets/svgs/2phones.svg";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -127,7 +128,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="relative">
         <PhoneModel
           section2CameraFirst={section2CameraFirst}
@@ -139,46 +140,43 @@ const App = () => {
 
         {/* Section 1 */}
         <div className="section1 bg-white h-[100vh] pt-32" id="section1">
-          <div className="flex items-center justify-center gap-14 bg-blue-200 rounded-[25px] h-[80px] w-[60vw] mx-auto">
-            <div className="text-lg font-bold text-gray-600 flex gap-8 relative">
+          <div className="flex items-center justify-between px-2 sm:px-5 xl:px-10 gap-2 sm:gap-4 lg:gap-8 xl:gap-14 bg-blue-200 rounded-[25px] h-[80px] w-[92vw] sm:w-[80vw] xl:w-[60vw] mx-auto">
+            <div className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-lg font-bold text-gray-600 flex items-center justify-between relative gap-2 lg:gap-4 xl:gap-8">
               <img
-                src={phoneSvg}
+                src={twoPhones}
                 alt=""
-                className="w-7 h-7 absolute -left-[44px] top-2"
-              />
-              <img
-                src={phoneSvg}
-                alt=""
-                className="w-7 h-7 absolute -left-16 -top-1"
+                className="w-7 sm:w-8 lg:w-10 h-7 sm:h-8 lg:h-10"
               />
               Trade in your phone and save.
               <div className="border-r border-gray-400 h-7 w-1 opacity-60" />
             </div>
-            <div className="text-[14px] font-semibold text-gray-600 -ml-7">
+            <div className="text-[10px] sm:text-[12px] lg:text-[14px] font-semibold text-gray-600">
               Apply the value of your old phone to your new phone.
             </div>
-            <div className="text-blue-600 font-semibold ml-10 flex items-center justify-center gap-2">
+            <div className="text-blue-600 text-[12px] sm:text-[14px] lg:text-lg font-semibold flex items-center justify-center gap-1 lg:gap-2">
               Get estimate for trade-in
-              <img src={rightArrow2} alt="" className="w-3 h-3" />
+              <img src={rightArrow2} alt="" className="w-2 lg:w-3 h-2 lg:h-3" />
             </div>
           </div>
 
-          <div className="flex flex-col pt-28 mt-10 pl-32 text-[#353535] bg-blue-200 h-[600px] w-[70vw] mx-auto rounded-[40px]">
-            <div className="text-5xl font-semibold tracking-tight">
-              <div>The best of Google.</div>
-              <div>Even more pro.</div>
+          <div className="flex flex-col pt-28 mt-10 pl-32 text-[#353535] bg-blue-200 h-[560px] lg:h-[600px] w-[80vw] lg:w-[90vw] max-w-[1350px] mx-auto rounded-[40px]">
+            <div className="hidden lg:block">
+              <div className="text-5xl font-semibold tracking-tight">
+                <div>The best of Google.</div>
+                <div>Even more pro.</div>
+              </div>
+
+              <div className="mt-4 text-2xl font-bold">From $999</div>
+              <div className="mt-2 text-base font-semibold">
+                or $27.75/month with 36-month financing*
+              </div>
+
+              <button className="w-16 h-10 rounded-md bg-[#336cf2] text-white text-[16px] font-semibold mt-5">
+                Buy
+              </button>
             </div>
 
-            <div className="mt-4 text-2xl font-bold">From $999</div>
-            <div className="mt-2 text-base font-semibold">
-              or $27.75/month with 36-month financing*
-            </div>
-
-            <button className="w-16 h-10 rounded-md bg-[#336cf2] text-white text-[16px] font-semibold mt-5">
-              Buy
-            </button>
-
-            <div className="flex justify-between mt-40">
+            <div className="hidden lg:flex justify-between mt-40">
               <div>
                 <div className="flex gap-3">
                   <div className="rounded-full cursor-pointer w-6 h-6 bg-black border-2 border-white"></div>
@@ -207,19 +205,19 @@ const App = () => {
         </div>
 
         {/* Section 2 */}
-        <div className="section2 bg-white h-[100vh] flex flex-col items-center justify-center">
-          <div className="flex justify-between w-[70vw]">
-            <div className="flex flex-col text-[#353535] bg-blue-200 h-[600px] w-[950px] rounded-[40px]">
-              <div className="flex items-center justify-center text-3xl font-semibold tracking-tight mt-16">
+        <div className="section2 bg-white flex flex-col items-center justify-center">
+          <div className="flex flex-col lg:flex-row justify-between w-[90vw] 2xl:w-[70vw] gap-5">
+            <div className="flex flex-col text-[#353535] bg-blue-200 h-[450px] sm:h-[600px] w-[100%] lg:w-[950px] rounded-[40px]">
+              <div className="flex items-center justify-center px-6 text-xl lg:text-3xl font-semibold tracking-tight mt-16">
                 Award-winning cameras and amazing editing.
               </div>
 
-              <div className="flex items-center justify-center text-2xl tracking-tight mt-[400px]">
+              <div className="flex items-center justify-center px-6 text-lg lg:text-2xl tracking-tight mt-[240px] sm:mt-[400px]">
                 Polished aluminum frame and matte back glass.
               </div>
             </div>
 
-            <div className="w-[370px] h-[600px] flex flex-col justify-between">
+            <div className="w-[90vw] lg:w-[370px] lg:h-[600px] flex flex-wrap lg:flex-col gap-5 justify-between">
               <div
                 ref={firstImageRef}
                 style={{
@@ -289,23 +287,23 @@ const App = () => {
             </div>
           </div>
 
-          <div className="flex justify-between w-[70vw]">
-            <div className="section3 group cursor-pointer flex flex-col text-white bg-blue-200 h-[200px] w-[49%] rounded-[40px] mt-10 relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row justify-between w-[90vw] sm:w-[70vw]">
+            <div className="section3 group cursor-pointer flex flex-col text-white bg-blue-200 h-[200px] w-[100%] lg:w-[49%] rounded-[40px] mt-10 relative overflow-hidden">
               <div
                 style={{ backgroundImage: `url(${matteBlack})` }}
-                className="opacity-50 transform transition-opacity duration-300 ease-in-out  group-hover:opacity-100 absolute right-0 flex w-[100%] h-[100%] pt-[135px] justify-center text-2xl font-semibold tracking-tight bg-cover rounded-[40px]"
+                className="opacity-50 transform transition-opacity duration-300 ease-in-out  group-hover:opacity-100 absolute right-0 flex w-[100%] h-[100%] pt-[135px] justify-center px-5 text-lg sm:text-2xl font-semibold tracking-tight bg-cover rounded-[40px]"
               >
                 Award-winning cameras and amazing editing.
               </div>
 
               <div
                 style={{ backgroundImage: `url(${matteBlack2})` }}
-                className="absolute transform duration-300 ease-in-out group-hover:-translate-x-[120%] flex w-[95%] h-[100%] pt-[135px] justify-center text-2xl font-semibold tracking-tight bg-cover rounded-[40px]"
+                className="absolute transform duration-300 ease-in-out group-hover:-translate-x-[120%] flex w-[95%] h-[100%] pt-[135px] justify-center px-5 text-lg sm:text-2xl font-semibold tracking-tight bg-cover rounded-[40px]"
               >
                 Polished aluminum frame and matte back glass.
               </div>
             </div>
-            <div className="section3 flex flex-col text-[#353535] bg-blue-200 h-[200px] w-[49%] rounded-[40px] mt-10"></div>
+            <div className="section3 flex flex-col text-[#353535] bg-blue-200 h-[200px] w-[100%] lg:w-[49%] rounded-[40px] mt-10"></div>
           </div>
         </div>
 
@@ -314,11 +312,118 @@ const App = () => {
           className="bg-blue-100 mt-10 h-[110vh] flex flex-col items-center"
           id="section2"
         >
-          <div className="flex text-3xl font-semibold tracking-tight mt-14 text-[#353535]">
+          <div className="flex text-3xl px-8 font-semibold tracking-tight mt-14 text-[#353535]">
             Incredible videos on every take.
           </div>
 
-          <div className="w-[60vw] rounded-[40px] h-[550px] bg-blue-400 mt-12 relative">
+          <div className="flex flex-col gap-8 lg:hidden mt-12 lg:mt-0 w-[80vw]">
+            <div>
+              <div
+                onClick={() => {
+                  setVideoText("first");
+                  setIsEnded(false);
+                  setIsPlaying(true);
+                }}
+                className="border-b-gray-300 text-[#5f5f5f] text-lg font-bold cursor-pointer flex justify-between w-full"
+              >
+                Stunning comes standard.{" "}
+                <FontAwesomeIcon
+                  icon={faAngleDown}
+                  className={`w-5 h-5 text-[#353535] transform transition-transform duration-300 ${
+                    videoText === "first" ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+
+              <div className="mt-4">
+                {videoText === "first" && (
+                  <>
+                    <VideoPlayer
+                      key={videoText}
+                      videoSource={googlePixelVideo}
+                    />
+
+                    <div className="mt-4 text-md font-semibold leading-[24px] text-[#454545] text-start">
+                      The Pixel Camera records sharp, smooth video with rich
+                      color and clear audio, even in crowded, dimly lit places.
+                      Google AI applies noise reduction to boost video quality
+                      in any light.
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <div
+                onClick={() => {
+                  setVideoText("second");
+                  setIsEnded(false);
+                  setIsPlaying(true);
+                }}
+                className="border-b-gray-300 text-[#5f5f5f] text-lg font-bold cursor-pointer flex justify-between w-full"
+              >
+                Expert video processing.{" "}
+                <FontAwesomeIcon
+                  icon={faAngleDown}
+                  className={`w-5 h-5 text-[#353535] transform transition-transform duration-300 ${
+                    videoText === "second" ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+              <div className="mt-4">
+                {videoText === "second" && (
+                  <>
+                    <VideoPlayer
+                      key={videoText}
+                      videoSource={googlePixelVideo2}
+                    />
+                    <div className="mt-4 text-md font-semibold leading-[24px] text-[#454545] text-start">
+                      Don’t worry about shaky or imperfect videos. Video Boost
+                      automatically adjusts color, lighting, stabilization, and
+                      graininess. And it enables Night Sight Video on Pixel 8
+                      Pro.^
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <div
+                onClick={() => {
+                  setVideoText("third");
+                  setIsEnded(false);
+                  setIsPlaying(true);
+                }}
+                className="border-b-gray-300 text-[#5f5f5f] text-lg font-bold cursor-pointer flex justify-between w-full"
+              >
+                Beautifully authentic videos with Real Tone.{" "}
+                <FontAwesomeIcon
+                  icon={faAngleDown}
+                  className={`w-5 h-5 text-[#353535] transform transition-transform duration-300 ${
+                    videoText === "third" ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+              <div className="mt-4">
+                {videoText === "third" && (
+                  <>
+                    <VideoPlayer
+                      key={videoText}
+                      videoSource={googlePixelVideo3}
+                    />
+                    <div className="mt-4 text-md font-semibold leading-[24px] text-[#454545] text-start">
+                      Real Tone, now in video, represents the nuances of more
+                      skin tones accurately. So everyone feels seen.
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden lg:flex w-[80vw] sm:w-[500px] lg:w-[60vw] h-[450px] sm:h-[500px] lg:h-[550px] rounded-[40px] mt-12 relative">
             <VideoPlayer
               key={videoText}
               videoSource={
@@ -331,7 +436,7 @@ const App = () => {
             />
           </div>
 
-          <div className="w-[45vw] flex flex-col items-center justify-center mt-10">
+          <div className="w-[80vw] sm:w-[500px] lg:w-[80vw] hidden lg:flex flex-col items-center justify-center lg:mt-10">
             <div className="flex">
               <div
                 onClick={() => {
@@ -359,7 +464,7 @@ const App = () => {
                     : "border-b-gray-300 text-[#5f5f5f]"
                 }  text-xl font-bold py-7 border-b-2 px-5 cursor-pointer hover:bg-[#cedef3aa] transition-all duration-300 ease-in-out rounded-t-lg`}
               >
-                Stunning comes standard.
+                Expert video processing.
               </div>
               <div
                 onClick={() => {
@@ -371,13 +476,13 @@ const App = () => {
                   videoText === "third"
                     ? "border-b-gray-800 text-[#292929]"
                     : "border-b-gray-300 text-[#5f5f5f]"
-                }  text-xl font-bold py-7 border-b-2 px-5 cursor-pointer hover:bg-[#cedef3aa] transition-all duration-300 ease-in-out rounded-t-lg`}
+                }  text-xl font-bold py-7 border-b-2 px-5 max-w-[300px] cursor-pointer hover:bg-[#cedef3aa] transition-all duration-300 ease-in-out rounded-t-lg`}
               >
-                Stunning comes standard.
+                Beautifully authentic videos with Real Tone.
               </div>
             </div>
 
-            <div className="mb-10 mt-10 text-md font-semibold leading-[24px] text-[#454545] max-w-[54%] text-center">
+            <div className="mb-10  mt-4 lg:mt-10 text-md font-semibold leading-[24px] text-[#454545] max-w-[100%] lg:max-w-[54%] text-start lg:text-center">
               {videoText === "first" ? (
                 <div>
                   The Pixel Camera records sharp, smooth video with rich color
@@ -402,14 +507,14 @@ const App = () => {
       </div>
 
       {/* Section 4 */}
-      <div className="bg-blue-100 pt-10 h-[340vh] flex flex-col items-center">
-        <div className="w-[60vw] relative flex justify-between">
+      <div className="bg-blue-100 pt-10 flex flex-col items-center pb-10 lg:pb-32">
+        <div className="w-[80vw] lg:w-[60vw] relative flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center">
           <div
             style={{ backgroundImage: `url(${photoLeft})` }}
-            className="bg-blue-400 w-[50%] h-[580px] rounded-[40px]"
+            className="bg-blue-400 w-[80%] sm:w-[500px] lg:w-[50%] min-w-[300px] min-h-[300px] h-auto sm:h-[500px] lg:h-[30vw] rounded-[40px] bg-contain bg-center mt-10 lg:mt-0"
           ></div>
 
-          <div className="w-[45%] h-[580px] pl-24 flex flex-col items-center justify-center">
+          <div className="sm:w-[100%] lg:w-[45%] h-auto lg:pl-24 flex flex-col items-center justify-center -mt-28 sm:mt-14 lg:mt-0">
             <div className="text-4xl font-semibold tracking-tight text-[#353535]">
               Even more creative control. Even better photos.
             </div>
@@ -421,12 +526,12 @@ const App = () => {
           </div>
         </div>
 
-        <div className="w-[60vw] relative flex justify-between mt-32">
-          <div className="w-[45%] h-[580px] pr-24 flex flex-col items-center justify-center">
+        <div className="w-[80vw] lg:w-[60vw] relative flex flex-col lg:flex-row justify-center lg:justify-between items-center mt-28">
+          <div className="sm:w-[100%] lg:w-[45%] h-auto lg:pr-24 flex flex-col items-center justify-center">
             <div className="text-4xl font-semibold tracking-tight text-[#353535]">
               Better low-light photos. It’s like night and day.
             </div>
-            <div className="text-md font-semibold tracking-tight text-[#4d4d4d] mt-4">
+            <div className="text-md font-semibold tracing-tight text-[#4d4d4d] mt-4">
               The Pixel 8 Pro camera delivers stunning photo quality from dusk
               until dawn with Night Sight and astrophotography.
             </div>
@@ -434,24 +539,24 @@ const App = () => {
 
           <div
             style={{ backgroundImage: `url(${photoRight})` }}
-            className="bg-blue-400 w-[50%] h-[580px] rounded-[40px]"
+            className="bg-blue-400 w-[80%] sm:w-[500px] lg:w-[50%] min-w-[300px] min-h-[300px] h-auto sm:h-[500px] lg:h-[30vw] rounded-[40px] bg-contain bg-center mt-10 lg:mt-0"
           ></div>
         </div>
 
         <div className="mt-40">
-          <div className="text-5xl font-semibold text-[#353535] max-w-[650px] text-center">
+          <div className="text-3xl sm:text-4xl px-2 lg:text-5xl font-semibold text-[#353535] max-w-[650px] text-center">
             Advanced editing helps you control every detail.
           </div>
 
-          <div className="text-md font-semibold tracking-tight text-[#353535] max-w-[650px] text-center mt-6">
+          <div className="text-[14px] px-4 sm:text-md font-semibold tracking-tight text-[#353535] max-w-[650px] text-center mt-6">
             With Google AI, you can edit photos in ways you never thought
             possible, so they match your vision.
           </div>
         </div>
 
         <div className="mt-24">
-          <div className="w-[60vw] relative flex justify-between">
-            <div className="bg-blue-400 w-[50%] h-full rounded-[40px] relative">
+          <div className="w-[80vw] lg:w-[60vw] relative flex flex-col lg:flex-row justify-between items-center">
+            <div className="bg-blue-400 w-[100%] sm:w-[80%] lg:w-[50%] h-auto lg:h-full rounded-[40px] relative">
               <VideoPlayer
                 videoSource={
                   openSection === "section2"
@@ -461,7 +566,7 @@ const App = () => {
               />
             </div>
 
-            <div className="w-[45%] h-[580px] pl-24 flex flex-col items-start justify-center">
+            <div className="w-[100%] sm:w-[80%] lg:w-[45%] h-[580px] lg:pl-24 -mt-32 lg:mt-0 flex flex-col items-center lg:items-start justify-center">
               {/* Section 1 */}
               <div
                 onClick={() => toggleSection("section1")}
@@ -514,9 +619,9 @@ const App = () => {
             </div>
           </div>
 
-          <div className="w-[60vw] relative flex justify-between mt-28">
-            <div className="w-[45%] h-[580px] pr-24 flex flex-col items-start justify-center">
-              <div className="text-[34px] leading-[22px] w-full font-semibold tracking-tight text-[#353535] flex justify-between items-center cursor-pointer">
+          <div className="w-[80vw] lg:w-[60vw] relative flex flex-col-reverse lg:flex-row justify-between items-center lg:mt-28">
+            <div className="w-[100%] sm:w-[80%] lg:w-[45%] h-[580px] lg:pr-24 flex flex-col items-start justify-center -mt-32 lg:mt-0">
+              <div className="text-[34px] leading-[35px] w-full font-semibold tracking-tight text-[#353535] flex justify-between items-center cursor-pointer">
                 <div>Video sounds even better.</div>
               </div>
               <div>
@@ -532,7 +637,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="bg-blue-400 w-[50%] h-full rounded-[40px] relative">
+            <div className="bg-blue-400 w-[100%] sm:w-[80%] lg:w-[45%] h-full rounded-[40px] relative -mt-20 lg:mt-0">
               <VideoPlayer videoSource={googlePixelVideo6} />
             </div>
           </div>
@@ -541,21 +646,21 @@ const App = () => {
 
       {/* Section 5 */}
       <div
-        className="h-[215vh] bg-white text-[#353535] flex flex-col items-center"
+        className="bg-white text-[#353535] flex flex-col items-center"
         id="section3"
       >
         <div className="mt-20 font-semibold">Safety and security</div>
-        <div className="text-[90px] leading-[90px] font-semibold mt-5 max-w-[900px] text-center mb-24">
+        <div className="text-[50px] lg:text-[90px] leading-[60px] lg:leading-[90px] font-semibold mt-5 max-w-[900px] text-center mb-24">
           Pixel helps keep you and your info safe.
         </div>
 
-        <img src={fivePhones} alt="5 Phones" className="w-[75vw]" />
+        <img src={fivePhones} alt="5 Phones" className="w-[90vw] lg:w-[75vw]" />
 
-        <div className="w-[60vw] mt-40">
-          <div className="flex w-full justify-between h-[369px]">
-            <div className="w-[49%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-16 text-center font-semibold">
+        <div className="w-[90vw] xl:w-[80vw] 2xl:w-[60vw] mt-40 mb-20">
+          <div className="flex flex-col lg:flex-row w-full justify-between items-center lg:h-[369px] gap-6 lg:gap-0">
+            <div className="w-[90%] sm:w-[49%] h-[100%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-16 text-center font-semibold">
               <img src={section5One} alt="||" />
-              <div className="text-2xl px-24">
+              <div className="text-2xl xl:px-24">
                 Crisis alerts keep you a step ahead.
               </div>
               <div>
@@ -564,9 +669,11 @@ const App = () => {
               </div>
             </div>
 
-            <div className="w-[49%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-16 text-center font-semibold">
+            <div className="w-[90%] sm:w-[49%] h-[100%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-16 text-center font-semibold">
               <img src={section5Two} alt="||" />
-              <div className="text-2xl px-24">Security you can depend on.</div>
+              <div className="text-2xl xl:px-24">
+                Security you can depend on.
+              </div>
               <div>
                 With Google Tensor G3 and the Titan M2 chip, multiple layers of
                 security help keep you and your personal info safe.
@@ -574,8 +681,8 @@ const App = () => {
             </div>
           </div>
 
-          <div className="flex w-full justify-between h-[369px] mt-5">
-            <div className="w-[32%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
+          <div className="flex flex-col lg:flex-row w-full justify-between items-center lg:h-[369px] mt-5 gap-6 lg:gap-0">
+            <div className="w-[90%] sm:w-[49%] lg:w-[32%] h-[100%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
               <img src={section5Three} alt="||" />
               <div className="text-2xl px-3">
                 Extra protection when you’re online.
@@ -586,7 +693,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="w-[32%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
+            <div className="w-[90%] sm:w-[49%] lg:w-[32%] h-[100%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
               <img src={section5One} alt="||" />
               <div className="text-2xl px-3">Security updates for 7 years.</div>
               <div>
@@ -595,7 +702,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="w-[32%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
+            <div className="w-[90%] sm:w-[49%] lg:w-[32%] h-[100%] bg-[rgb(248,248,248)] rounded-[25px] text-[#353535] flex flex-col items-center justify-center gap-4 px-10 text-center font-semibold">
               <img src={section5One} alt="||" />
               <div className="text-2xl px-3">
                 Detects a car crash. And calls for help.

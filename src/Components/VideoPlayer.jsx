@@ -45,7 +45,7 @@ const VideoPlayer = ({ videoSource, onVideoEnd }) => {
     <div className="relative">
       <video
         ref={videoRef}
-        className="w-full h-full rounded-[40px] object-cover"
+        className="w-full h-full min-h-[300px] sm:min-h-[500px] rounded-[40px] object-cover"
         autoPlay
         muted
         onEnded={handleVideoEnd}
