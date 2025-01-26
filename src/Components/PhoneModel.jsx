@@ -23,7 +23,7 @@ const IPhoneModel = React.forwardRef((props, ref) => {
         {props.animationSection2Finished && (
           <div>
             <div
-              className={`mt-[-110px] ml-[210px] w-10 h-10 m-4 relative ${
+              className={`mt-[-110px] ml-[200px] w-10 h-10 m-4 relative ${
                 props.section2CameraFirst ? "opacity-100" : "opacity-0"
               } transform duration-300 ease-in-out`}
             >
@@ -43,7 +43,7 @@ const IPhoneModel = React.forwardRef((props, ref) => {
             </div>
 
             <div
-              className={`mt-[24px] ml-[210px] w-10 h-10 m-4 relative ${
+              className={`mt-[24px] ml-[200px] w-10 h-10 m-4 relative ${
                 props.section2CameraSecond ? "opacity-100" : "opacity-0"
               } transform duration-300 ease-in-out`}
             >
@@ -63,7 +63,7 @@ const IPhoneModel = React.forwardRef((props, ref) => {
             </div>
 
             <div
-              className={`mt-[20px] ml-[210px] w-10 h-10 m-4 relative ${
+              className={`mt-[20px] ml-[200px] w-10 h-10 m-4 relative ${
                 props.section2CameraThird ? "opacity-100" : "opacity-0"
               } transform duration-300 ease-in-out`}
             >
@@ -152,7 +152,7 @@ const IPhoneScene = ({
               // Calculate new properties based on progress
               const newY = isPhone
                 ? initialPosition.y - 1.3 * progress
-                : initialPosition.y - 1.82 * progress;
+                : initialPosition.y - 1.9 * progress;
               const newX = isPhone
                 ? initialPosition.x - 0 * progress
                 : initialPosition.x - 1.23 * progress;
@@ -191,7 +191,7 @@ const IPhoneScene = ({
               // Calculate new properties based on progress
               const newY = isPhone
                 ? initialPosition.y - 1.3 - 2.78 * progress
-                : initialPosition.y - 1.82 - 1.24 * progress;
+                : initialPosition.y - 1.9 - 1.24 * progress;
               const newX = isPhone
                 ? initialPosition.x - 0 + 0 * progress
                 : initialPosition.x - 1.23 + 1.45 * progress;
@@ -228,7 +228,7 @@ const IPhoneScene = ({
     <Canvas
       dpr={[1, 1.5]}
       antialias="false"
-      className="right-1/2 transform translate-x-[0%] lg:translate-x-[16%]"
+      className="right-1/2 transform translate-x-[0%] lg:translate-x-[14%]"
       style={{
         position: "absolute",
         top: 0,
